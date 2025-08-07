@@ -33,7 +33,7 @@ console.log(aleatorio);*/
 
 //num aleatório entre intervalos
 let min = 1;
-let max = 90;
+let max = 3;
 
 let nAleatorio =Math.random() * (max - min) + min;
 console.log(Math.round(nAleatorio))
