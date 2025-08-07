@@ -24,4 +24,5 @@ form.addEventListener('submit',function(evento) {
 
     resultado.innerHTML += `<p>${nome} ${sobrenome} - ${peso}kg, ${altura}m</p>`;
 
+    form.reset()
 })
