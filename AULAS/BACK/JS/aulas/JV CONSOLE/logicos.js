@@ -62,3 +62,9 @@ if (pontosU < 1000){
 
 const nivel = pontosU < 1000 ? "USER NORMAL":"USER VIP"
 console.log(nivel)
+
+// AVALIAÇÃO DE CURTO CIRCUITO
+//ooperaador logico || pode ser usado para definir valores padrão quando uma variavel é nula, indefinida ou falsy
+const corUser = null;// falsy
+const corPadrão = corUser || "verde";
+console.log(corPadrão) //trufhy
