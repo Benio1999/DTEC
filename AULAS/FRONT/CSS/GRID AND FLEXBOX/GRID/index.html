@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>gridando</title>
+    <!-- <style>
+        div.container{
+            border: 0.1px solid rgb(255, 0, 0);
+            display: grid;
+            grid-template-columns: auto auto auto;
+            grid-row: auto auto auto;
+            gap: 5px;
+            height: 100vh;
+        }
+        div.item{
+            border: 0.1px solid rgb(0, 81, 255);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        } 
+    </style> -->
+</head>
+<body>
+    <div class="container">
+        <div class="item item1">1</div>
+        <div class="item item2">11</div>
+        <div class="item item3">111</div>
+        <div class="item item4">1111</div>
+        <div class="item item5">11111</div>
+        <!-- <div class="item item6">111111</div>
+        <div class="item item7">1111111</div> -->
+    </div>
+</body>
+
+
+
+
+
+
+<style>
+    body{
+        background-color: rgb(0, 0, 0);
+    }
+        div.container{
+            background-color: rgb(206, 206, 206);
+            border: 0.1px solid rgb(255, 255, 255);
+            display: grid;
+            grid-template-columns: repeat(6,1fr);
+            grid-template-rows: repeat(10, 1fr);
+            column-gap: 16px;
+            row-gap: 8px;
+            /* grid-template-rows: 100px fr 100px;
+            gap: 5px;
+            height: 140vh; 
+        }
+        div.container:hover{
+            background-color: black;
+            color: aqua;
+        } */
+        div.item{
+            border: 0.1px solid rgb(255, 255, 255);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        } 
+        .item1{
+            grid-column: 1/7;
+            grid-row: 1;
+        }
+        .item2{
+            grid-column: 1/4;
+            grid-row: 2/7;
+            background-color: rgb(0, 204, 255);
+        }
+        .item3{
+            grid-column: 4/7;
+            grid-row: 2/7;
+            background-color: black;
+        }
+        .item4{
+            grid-column: 1/7;
+            grid-row: 7/10;
+        }
+        .item5{
+            grid-column: 1/7;
+            grid-row: 10;
+        }
+</style>
+</html>
