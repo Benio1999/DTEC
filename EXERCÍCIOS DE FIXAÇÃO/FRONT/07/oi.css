@@ -1,8 +1,12 @@
+.item{
+    border: 1px solid red;
+    background-color: rgb(251, 82, 82);
+}
 .container{
     display: flex;
     gap: 12px;
     height: 100hv;
-    align-self: flex-end;
+    align-self: center;
 }
 .item3{
     align-self: flex-end;
