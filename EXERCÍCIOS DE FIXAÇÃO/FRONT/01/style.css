@@ -1,0 +1,9 @@
+.container {
+    display: flex; gap: 12px; 
+    
+}
+.item {
+    background-color: cadetblue;
+    border:rgb(255, 38, 0) 1px solid ;
+    border-style: dashed;
+}

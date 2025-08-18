@@ -1,0 +1,9 @@
+.container{
+    display: flex;
+    gap: 12px;
+    height: 100hv;
+    align-self: flex-end;
+}
+.item3{
+    align-self: flex-end;
+}
