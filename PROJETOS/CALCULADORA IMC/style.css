@@ -20,7 +20,7 @@ body{
     gap: 100px;
 }
 .imc-row{
-    gap: 30px;
+    gap: 20px;
     display: flex;
 }
 .imc-row .col, .imc-header{
@@ -38,14 +38,13 @@ body{
 input, button{
     width: 100%;
 }
-input{
-
-}
 button{
     background-color: rgb(9,48,56);
     color: white;
+    padding: 12px;
     border: 0px;
 }
 button:hover{
     background-color: rgb(8, 41, 48);
+    scale: 0.99;
 }
