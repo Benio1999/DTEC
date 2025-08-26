@@ -1,4 +1,4 @@
-const button = document.getElementById("toggle-theme");
+const button = document.getElementById("togle-theme");
 
 button.addEventListener("click", () => {
   const isDarkMode = document.body.classList.toggle("dark-mode");
