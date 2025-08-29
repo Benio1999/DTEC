@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="CSS/style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="wrap">
+        <h1> Galeria com Filtros — Lite</h1>
+        <p class="muted">Clique em uma categoria para filtrar os itens.</p>
+
+        <!-- Botões -->
+        <div id="filters" class="filters" role="toolbar" aria-label="Filtros">
+            <button class="pill" data-filter="tudo" aria-pressed="true">Tudo</button>
+            <button class="pill" data-filter="natureza" aria-pressed="false">Natureza</button>
+            <button class="pill" data-filter="pessoas" aria-pressed="false">Pessoas</button>
+            <button class="pill" data-filter="cidades" aria-pressed="false">Cidades</button>
+        </div>
+
+        <!-- Galeria -->
+        <main id="grid" class="grid" aria-live="polite">
+            <!-- Natureza -->
+            <article class="card" data-category="natureza">
+                <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=1200&auto=format&fit=crop"
+                    alt="Montanhas ao amanhecer" />
+                <div class="meta"><strong>Montanhas ao amanhecer</strong><br><span class="muted">Natureza</span></div>
+            </article>
+            <article class="card" data-category="natureza">
+                <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1200&auto=format&fit=crop"
+                    alt="Floresta densa" />
+                <div class="meta"><strong>Floresta densa</strong><br><span class="muted">Natureza</span></div>
+            </article>
+
+            <!-- insira o arquicle Pessoas -->
+            <!-- LINK DA IMAGEM PESSOAS -->
+            <article class="card" data-category="pessoas">
+                <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?q=80&w=1200&auto=format&fit=crop"
+                    alt="Escalada a Montanha" />
+                <div class="meta"><strong>Pessoa escalando uma montanha</strong><br><span class="muted">Pessoas</span>
+                </div>
+            </article>
+            <article class="card" data-category="pessoas">
+                <img src="https://l1nk.dev/c2e4c"
+                    alt="Pessoa Pulando de paraquedas" />
+                <div class="meta"><strong>Pessoa saltando de paraquedas</strong><br><span class="muted">Pessoas</span>
+                </div>
+            </article>
+
+            <!-- Insira o article de Cidades -->
+            <!-- LINK DO IMAGEM -->
+            <article class="card" data-category="cidades">
+                <img src="https://images.unsplash.com/photo-1501594907352-04cda38ebc29?q=80&w=1200&auto=format&fit=crop"
+                    alt="Ponte Golden Gate" />
+                <div class="meta"><strong>Visão da Ponte Golden Gate</strong><br><span class="muted">Cidades</span>
+                </div>
+            </article>
+            <article class="card" data-category="cidades">
+                <img src="https://images.unsplash.com/photo-1501594907352-04cda38ebc29?q=80&w=1200&auto=format&fit=crop"
+                    alt="Ponte Golden Gate" />
+                <div class="meta"><strong>Visão da Ponte Golden Gate</strong><br><span class="muted">Cidades</span>
+                </div>
+            </article>
+        </main>
+    </div>
+    <script src="JS/script.js"></script>
+</body>
+
+</html>

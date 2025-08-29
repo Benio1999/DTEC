@@ -1,0 +1,29 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    background-color: #132b3f;
+    color: white;
+}
+
+.grid {
+    display: grid;
+    gap: 12px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.pill[aria-pressed="true"] {
+    background-color: aquamarine;
+    color: #031525;
+    border-color: transparent;
+    padding: 2px;
+    border-radius: 5px;
+}
+
+.pill[aria-pressed="false"] {
+    color: #031525;
+    border-color: transparent;
+    border-radius: 5px;
+}
