@@ -27,3 +27,13 @@ body {
     border-color: transparent;
     border-radius: 5px;
 }
+
+.hidden {
+    display: none !important;
+}
+
+.pill[aria-pressed="true"] {
+    background: var(--acc);
+    color: #031525;
+    border-color: transparent;
+}
