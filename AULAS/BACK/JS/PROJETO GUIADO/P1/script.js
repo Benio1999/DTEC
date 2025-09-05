@@ -18,6 +18,8 @@ buscarBtn.addEventListener('click', () => {
 
     const url = `https://restcountries.com/v3.1/translation/${nomePais}`
 
+    container.innerHTML = `<p>Buscando...</p>`
+
     fetch(url)
         .then(response => {
             if (!response.ok) {
