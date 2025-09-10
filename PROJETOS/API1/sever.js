@@ -16,6 +16,9 @@ let usuarios = [
     {id: 3, nome: "Mario", idade: 500}
 ]
 
+app.get('/',(req,res) => {
+    res.send("PÁGINA INICIAL")
+})
 
 app.get('/usuarios',(req,res) => {
     res.json(usuarios);
