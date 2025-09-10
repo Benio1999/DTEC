@@ -1,42 +1,55 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Consulta de cidades</title>
     <style>
-        body{
+        body {
+            background-color: rgb(217, 217, 217);
             font-family: sans-serif;
             max-width: 600px;
             margin: 40px auto;
             padding: 20px;
             text-align: center;
         }
-        input[type="text"]{
+
+        input[type="text"] {
             padding: 8px;
             width: 60%;
         }
-        button{
+
+        button {
             padding: 8px 15px;
         }
-        #container{
-            margin-top: 20px;
+
+        #container {
+            margin: 20px auto;
+            align-items: center;
+
+            height: 150px;
+            width: 200px;
             border: 1px solid #ccc;
-            padding: 20px;
             border-radius: 8px;
-            background-color: #dfdfdf;
+            background-color: #7ccfff;
+            color: black;
+            padding: 20px;
+            box-sizing: border-box;
         }
     </style>
 </head>
+
 <body>
     <h1>Consulta de cidades</h1>
     <p> Digite o nome uma cidade para buscar</p>
 
-    <input type="text" id="cidadeInput" placeholder="Digite o nome de um país aqui">
+    <input type="text" id="cidadeInput" placeholder="Digite uma cidade em português">
     <button id="buscarBtn">Buscar</button>
 
     <div id="container"></div>
 
     <script src="script.js"></script>
 </body>
+
 </html>
