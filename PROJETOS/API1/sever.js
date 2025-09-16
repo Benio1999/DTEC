@@ -1,11 +1,16 @@
 //importanto express
 const express = require('express');
 
+//importação cors
+const cors = require('cors')
+
 //criando minha aplicação
 const app = express();
 
 //permitir trabalhar com json
 app.use(express.json());
+//permitir trabalhar com cors
+app.use(cors())
 
 //porta onde a API vai rodar
 const PORT = 3001;
@@ -52,8 +57,10 @@ app.delete('/usuarios/:id', (req, res) => {
 })
 
 app.post("/usuarios", (req, res) => {
+    const ultimoId = usuarios.reduce((max, usuario) => Math.max(max, usuario.id), 0)
+
     const novoUsuario = {
-        id: usuarios.length + 1,
+        id: ultimoId  + 1,
         nome: req.body.nome,
         idade: req.body.idade
     };
