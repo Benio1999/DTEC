@@ -1,0 +1,52 @@
+body{
+    background-color: rgb(17, 86, 102);
+    font-family: 'Open Sans';
+    justify-items: center;
+}
+.container{
+    background-color: white;
+    border-radius: 5px;
+    max-width: 55%;
+    padding: 30px;
+}
+.imc-table{ 
+    border: 1px rgb(78, 78, 78) solid;
+    border-radius: 3px;
+}
+.imc-header{
+    background-color: rgb(9,48,56);
+    color: white;
+    display: flex;
+    gap: 100px;
+}
+.imc-row{
+    gap: 20px;
+    display: flex;
+}
+.imc-row .col, .imc-header{
+    flex: 1;
+}
+
+.paragrafo-resultado{
+    background-color: green;
+    color: white;
+    text-align: center;
+}
+.bad{
+    background-color: rgb(147, 0, 0);
+    color: white;
+    text-align: center;
+}
+input, button{
+    width: 100%;
+}
+button{
+    background-color: rgb(9,48,56);
+    color: white;
+    padding: 12px;
+    border: 0px;
+}
+button:hover{
+    background-color: rgb(8, 41, 48);
+    scale: 0.99;
+}
