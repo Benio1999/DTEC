@@ -1,7 +1,7 @@
 
 
 //Endereço do servidor node rodando na máquina
-const API_URL = 'http://localhost:3001/usuarios';
+const API_URL = 'http://localhost:3002/usuarios';
 
 //ELEMENTOS CONTAINER
 const userCardsContainer = document.getElementById('user-cards-container');
