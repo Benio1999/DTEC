@@ -1,14 +1,13 @@
 .campo-entrada-form{
-    border-radius: 8px;
     background-color: transparent;
+    border-radius: 8px;
     border: 1px solid #4a4949;
+    color: #fff;
     font-weight: 400;
     font-size: 16px;
     line-height: 120%;
-    color: #fff;
     padding: 8px 16px; 
 }
-
 .campo-entrada-form::placeholder{
     color: #4a4949;
 }
