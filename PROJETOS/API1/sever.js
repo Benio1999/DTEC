@@ -16,7 +16,6 @@ mongoose.connect(mongoURI)
         process.exit(1);
     })
 
-
 //ESTRUTURA DO DOCUMENTO
 const usuarioSchema = new mongoose.Schema(
     {
@@ -41,7 +40,7 @@ app.use(cors())
 
 app.get('/', (req, res) => {
     res.send("PÁGINA INICIAL")
-})
+});
 
 app.get('/usuarios', async (req, res) => {
     try {
@@ -50,71 +49,103 @@ app.get('/usuarios', async (req, res) => {
     } catch (error) {
         res.status(500).json({ mensagem: "Erro ao buscar usuários", erro: error.message })
     }
-})
+});
 
 app.get('/usuarios/:id', async (req, res) => {
-    try { 
+    try {
         const id = req.params.id;
         const usuario = await Usuario.findById(id);
 
-        if(usuario){
+        if (usuario) {
             res.json(usuario)
-        } else{
-            res.status(404).json({mensagem: "Usuário não encontrado"})
+        } else {
+            res.status(404).json({ mensagem: "Usuário não encontrado" })
         }
     } catch (error) {
-        res.status(400).json({mensagem: "Erro de Servidor", erro: error.message})
+        res.status(400).json({ mensagem: "Erro de Servidor", erro: error.message })
     }
-})
+});
 
-app.get('/usuarios/nome/:nome', (req, res) => {
-    const buscarNome = req.params.nome.toLowerCase();
-    const resultado = usuarios.filter(u => u.nome.toLowerCase().includes(buscarNome));
-    if (resultado.length > 0) {
-        res.json(resultado)
-    } else {
-        res.status(404).json({ mensagem: "Usuário não encontrado" })
+app.get('/usuarios/nome/:nome', async (req, res) => {
+    try {
+        const buscaNome = req.params.nome;
+        const resultados = await Usuario.find({
+            nome: { $regex: buscaNome, $options: '1' }
+        });
+
+        if (resultados.length > 0) {
+            res.json(resultados);
+        } else {
+            res.status(404).json({ mensagem: "Usuário Não Encontrado" })
+        }
+    } catch (error) {
+        console.error("Erro na busca", error);
+        res.status(500).json({ mensagem: "Erro no servidor", erro: error.message })
     }
-})
+});
 
-app.delete('/usuarios/:id', (req, res) => {
-    const id = req.params.id;
-    usuarios = usuarios.filter(u => u.id != id)
-    res.json({ mensagem: "Usuário removido com sucesso!" })
-})
+app.get('/usuarios/idade/:idade', async (req, res) => {
+    try {
+        const buscaIdade = req.params.idade;
+        const resultados = await Usuario.find({
+            idade: buscaIdade
+        });
 
-app.post("/usuarios", (req, res) => {
-    const ultimoId = usuarios.reduce((max, usuario) => Math.max(max, usuario.id), 0)
-
-    const novoUsuario = {
-        id: ultimoId + 1,
-        nome: req.body.nome,
-        idade: req.body.idade
-    };
-    usuarios.push(novoUsuario)
-    res.status(201).json(usuarios)
-})
-
-app.put('/usuarios/:id', (req, res) => {
-    const id = req.params.id;
-    const nome = req.body.nome;
-    const idade = req.body.idade;
-    const usuario = usuarios.find(u => u.id == id);
-    if (!usuario) {
-        return res.status(404).json({ mensagem: "Usuário não encontrado" })
+        if (resultados.length > 0) {
+            res.json(resultados);
+        } else {
+            res.status(404).json({ mensagem: "Usuário Não Encontrado" })
+        }
+    } catch (error) {
+        console.error("Erro na busca", error);
+        res.status(500).json({ mensagem: "Erro no servidor", erro: error.message })
     }
-    usuario.nome = nome || usuario.nome
-    usuario.idade = idade || usuario.idade
-    res.json(usuario)
-})
+});
 
-app.get('/usuarios/idade/:idade', (req, res) => {
-    const buscaIdade = req.params.idade;
-    const resultado = usuarios.filter(u => u.idade == buscaIdade);
-    if (resultado.length > 0) {
-        res.json(resultado)
-    } else {
-        res.status(404).json({ mensagem: "Usuário não encontrado" })
+app.delete('/usuarios/:id', async (req, res) => {
+    try {
+        const id = req.params.id;
+        const usuarioDeletado = await Usuario.findByIdAndDelete(id);
+
+        if (!usuarioDeletado) {
+            return res.status(404).json({ mensagem: "Usuário não encontrado" })
+        }
+
+        res.json({ mensagem: "Usuário deletado", usuario: usuarioDeletado })
+    } catch (error) {
+        res.status(400).json({ mensagem: "Erro ao deletar", erro: error.mensagem })
+    }
+});
+
+app.put("/usuarios/:id", async (req, res) => {
+    try {
+        const id = req.params.id;
+        const nome = req.body.nome;
+        const idade = req.body.idade;
+
+        const usuarioAtualizado = await Usuario.findById(
+            id,
+            { nome, idade },
+            { new: true, runValidators: true }
+        )
+        if (!usuarioAtualizado) {
+            return res.status(404).json({ mensagem: "Usuário Não encontrado" })
+        }
+        res.json(usuarioAtualizado)
+    } catch (error) { 
+        res.status(400).json({mensagem: "Erro ao atualizar", erro: error.message})
+    }
+});
+
+app.post('/usuarios', async (req, res) => {
+    try {
+        const novoUsuario = await Usuario.create({
+            nome: req.body.nome,
+            idade: req.body.idade
+        });
+        res.status(201).json(novoUsuario);
+    } catch (error) {
+        res.status(400).json({mensagem: "Dados inváldos ou erro ao salvar", error: error_message})
     }
 })
 
