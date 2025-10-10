@@ -123,7 +123,7 @@ app.put("/usuarios/:id", async (req, res) => {
         const nome = req.body.nome;
         const idade = req.body.idade;
 
-        const usuarioAtualizado = await Usuario.findById(
+        const usuarioAtualizado = await Usuario.findByIdAndUpdate(
             id,
             { nome, idade },
             { new: true, runValidators: true }
