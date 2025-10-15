@@ -37,12 +37,17 @@ function App() {
 
   const eventos = [
     {
-      capa: 'https:',
+      capa: 'https://raw.githubusercontent.com/viniciosneves/tecboard-assets/refs/heads/main/imagem_1.png',
       tema: temas[0],
       data: new Date(),
       titulo: 'Mulheres no Front'
     }
   ]
+
+  function adicionarEvento(evento) {
+    eventos.push(evento)
+    console.log('eventos =>', eventos)
+  }
 
   return (
     <main>
@@ -50,8 +55,7 @@ function App() {
         <img src="/logo.png" alt="Tecboard" />
       </header>
       <Banner />
-      <FormularioDeEvento></FormularioDeEvento>
-
+      <FormularioDeEvento temas={temas} aoSubmeter={adicionarEvento}/>
 
       {temas.map(function (item) {
         return (
@@ -61,23 +65,7 @@ function App() {
           </section>
         )
       }
-      )}
-
-      {/* <section>
-        <Tema tema={temas[1]} />
-      </section>
-      <section>
-        <Tema tema={temas[2]} />
-      </section>
-      <section>
-        <Tema tema={temas[3]} />
-      </section>
-      <section>
-        <Tema tema={temas[4]} />
-      </section>
-      <section>
-        <Tema tema={temas[5]} />
-      </section> */}  
+      )} 
     </main>
   )
 }
