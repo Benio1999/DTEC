@@ -3,10 +3,11 @@ import { Banner } from './assets/componentes/Banner';
 import { CardEvento } from './assets/componentes/CardEvento';
 import { FormularioDeEvento } from "./assets/componentes/FormularioDeEvento";
 import { Tema } from './assets/componentes/Tema';
+import { useState } from 'react';
+
 
 
 function App() {
-
 
   const temas = [
     {
@@ -35,18 +36,19 @@ function App() {
     }
   ]
 
-  const eventos = [
+  const [eventos, setEventos] = useState ([
     {
       capa: 'https://raw.githubusercontent.com/viniciosneves/tecboard-assets/refs/heads/main/imagem_1.png',
       tema: temas[0],
       data: new Date(),
       titulo: 'Mulheres no Front'
     }
-  ]
+  ])
 
   function adicionarEvento(evento) {
-    eventos.push(evento)
-    console.log('eventos =>', eventos)
+    setEventos([...eventos, evento])
+    // eventos.push(evento)
+    // console.log('eventos =>', eventos)
   }
 
   return (
@@ -55,17 +57,22 @@ function App() {
         <img src="/logo.png" alt="Tecboard" />
       </header>
       <Banner />
-      <FormularioDeEvento temas={temas} aoSubmeter={adicionarEvento}/>
+      <FormularioDeEvento temas={temas} aoSubmeter={adicionarEvento} />
 
       {temas.map(function (item) {
         return (
           <section key={item.id}>
             <Tema tema={item} />
-            <CardEvento evento = {eventos[0]}/>
+            {eventos.map(function(item, index) {
+              return (
+                <CardEvento evento={item} key={index}/>
+              )
+            }
+            )}
           </section>
         )
-      }
-      )} 
+      
+      })}
     </main>
   )
 }
