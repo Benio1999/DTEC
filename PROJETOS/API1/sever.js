@@ -67,7 +67,7 @@ app.post('/api/register-admin', async (req, res) => {
     }
 })
 
-app.post('api/login-admin', async (req, res) => {
+app.post('/api/login-admin', async (req, res) => {
     const { email, password } = req.body
     try {
         const user = await User.findOne({ email }).select('+password');
@@ -90,19 +90,19 @@ app.get('/', (req, res) => {
     res.send("PÁGINA INICIAL")
 });
 
-app.get('/usuarios', async (req, res) => {
+app.get('/pessoas', async (req, res) => {
     try {
-        const usuarios = await Usuario.find({});
+        const usuarios = await Pessoa.find({});
         res.json(usuarios);
     } catch (error) {
         res.status(500).json({ mensagem: "Erro ao buscar usuários", erro: error.message })
     }
 });
 
-app.get('/usuarios/:id', async (req, res) => {
+app.get('/pessoas/:id', async (req, res) => {
     try {
         const id = req.params.id;
-        const usuario = await Usuario.findById(id);
+        const usuario = await Pessoa.findById(id);
 
         if (usuario) {
             res.json(usuario)
@@ -114,10 +114,10 @@ app.get('/usuarios/:id', async (req, res) => {
     }
 });
 
-app.get('/usuarios/nome/:nome', async (req, res) => {
+app.get('/pessoas/nome/:nome', async (req, res) => {
     try {
         const buscaNome = req.params.nome;
-        const resultados = await Usuario.find({
+        const resultados = await Pessoa.find({
             nome: { $regex: buscaNome, $options: '1' }
         });
 
@@ -132,10 +132,10 @@ app.get('/usuarios/nome/:nome', async (req, res) => {
     }
 });
 
-app.get('/usuarios/idade/:idade', async (req, res) => {
+app.get('/pessoas/idade/:idade', async (req, res) => {
     try {
         const buscaIdade = req.params.idade;
-        const resultados = await Usuario.find({
+        const resultados = await Pessoa.find({
             idade: buscaIdade
         });
 
@@ -150,12 +150,12 @@ app.get('/usuarios/idade/:idade', async (req, res) => {
     }
 });
 
-app.delete('/usuarios/:id', async (req, res) => {
+app.delete('/pessoas/:id', protect, async (req, res) => {
     try {
         const id = req.params.id;
-        const usuarioDeletado = await Usuario.findByIdAndDelete(id);
+        const pessoaDeletada = await Pessoa.findByIdAndDelete(id);
 
-        if (!usuarioDeletado) {
+        if (!pessoaDeletada) {
             return res.status(404).json({ mensagem: "Usuário não encontrado" })
         }
 
@@ -165,13 +165,13 @@ app.delete('/usuarios/:id', async (req, res) => {
     }
 });
 
-app.put("/usuarios/:id", async (req, res) => {
+app.put("/pessoas/:id", async (req, res) => {
     try {
         const id = req.params.id;
         const nome = req.body.nome;
         const idade = req.body.idade;
 
-        const usuarioAtualizado = await Usuario.findByIdAndUpdate(
+        const usuarioAtualizado = await Pessoa.findByIdAndUpdate(
             id,
             { nome, idade },
             { new: true, runValidators: true }
@@ -185,9 +185,9 @@ app.put("/usuarios/:id", async (req, res) => {
     }
 });
 
-app.post('/usuarios', async (req, res) => {
+app.post('/pessoas', async (req, res) => {
     try {
-        const novoUsuario = await Usuario.create({
+        const novoUsuario = await Pessoa.create({
             nome: req.body.nome,
             idade: req.body.idade
         });
