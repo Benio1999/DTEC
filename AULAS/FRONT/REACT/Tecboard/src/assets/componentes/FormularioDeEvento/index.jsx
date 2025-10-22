@@ -9,24 +9,21 @@ import { TituloFormulario } from "../TituloFormulario";
 
 export function FormularioDeEvento({ temas, aoSubmeter }) {
 
-    function aoFormSubmetido(e) {
-        e.preventDefault()
-        const form = e.target
-        const FormDataObj = new FormData(form)
-        console.log('Está na hora de criar um evento', FormDataObj)
+    function aoFormSubmetido(FormData) {
+        console.log('Está naa hora de criar um evento', FormData)
         const evento = {
-            capa: FormDataObj.get('capa'),
+            capa: FormData.get('capa'),
             tema: temas.find(function (item) {
-                return item.id == FormDataObj.get('tema')
+                return item.id == FormData.get('tema')
             }),
-            data: new Date(FormDataObj.get('dataEvento')),
-            titulo: FormDataObj.get('nomeEvento')
+            data: new Date(FormData.get('dataEvento')),
+            titulo: FormData.get('nomeEvento')
         }
         aoSubmeter(evento)
     }
 
     return (
-        <form className='form-evento' onSubmit={aoFormSubmetido}>
+        <form className='form-evento' action={aoFormSubmetido}>
             <TituloFormulario> Preencha para criar um evento: </TituloFormulario>
 
             <div className='campos'>
